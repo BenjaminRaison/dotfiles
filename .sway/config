@@ -9,15 +9,15 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
+set $left Left
+set $down Down
+set $up Up
+set $right Right
 # Your preferred terminal emulator
 set $term urxvt
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu exec rofi -show run -lines 10 -eh 1 -padding 800 -font "Roboto 18"
+set $menu "exec rofi -show run -lines 10 -eh 1 -padding 800 -font 'Roboto 18'"
 
 ### Output configuration
 #
@@ -38,7 +38,8 @@ output * bg /home/benji/src/swaywm/sway/assets/Sway_Wallpaper_Blue_1920x1080.png
           timeout 300 'swaylock -f -c 000000' \
           timeout 600 'swaymsg "output * dpms off"' \
                resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -c 000000'
+          before-sleep 'swaylock -f -c 000000' \
+	  lock 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -62,6 +63,13 @@ input * {
 	xkb_layout ch
 }
 
+input "2:8:AlpsPS/2_ALPS_DualPoint_TouchPad" {
+	dwt enabled                  # Disable-while-typing
+	tap enabled
+	natural_scroll enabled       # Invert scrolling
+	middle_emulation enabled
+}
+
 ### Key bindings
 #
 # Basics:
@@ -74,6 +82,26 @@ input * {
 
     # start your launcher
     bindsym $mod+d exec $menu
+
+    # lock
+    bindsym $mod+l exec "swaylock -f -c 000000"
+
+    # Volume
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +1%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -1%
+    bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+
+    # Microphone
+    bindsym XF86AudioMicMute exec amixer -q set Capture toggle
+
+    # web broser
+    bindsym XF86HomePage exec chromium
+
+    # file explorer
+    bindsym XF86MyComputer exec nautilus $HOME
+
+    # calculator
+    # bindsym XF86Calculator # TODO
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -95,22 +123,12 @@ input * {
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
 
     # _move_ the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-    # ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -187,12 +205,6 @@ mode "resize" {
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
-
-    # ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
 
     # return to default mode
     bindsym Return mode "default"
