@@ -24,10 +24,13 @@ dotfiles: ## Installs the dotfiles.
 	ln -fn $(CURDIR)/gitignore $(HOME)/.gitignore;
 	git update-index --skip-worktree $(CURDIR)/.gitconfig;
 	mkdir -p $(HOME)/.config;
-	ln -snf $(CURDIR)/.i3 $(HOME)/.config/sway;
+	ln -snf $(CURDIR)/.sway $(HOME)/.config/sway;
 	mkdir -p $(HOME)/.local/share;
 	ln -snf $(CURDIR)/.fonts $(HOME)/.local/share/fonts;
 	ln -snf $(CURDIR)/.bash_profile $(HOME)/.profile;
+	if [ -f /usr/local/bin/android-studio/bin/studio.sh ]; then \
+		sudo ln -sf /usr/local/bin/android-studio/bin/studio.sh /usr/local/bin/androidstudio; \
+	fi;
 	if [ -f /usr/local/bin/pinentry ]; then \
 		sudo ln -snf /usr/bin/pinentry /usr/local/bin/pinentry; \
 	fi;
