@@ -96,6 +96,10 @@ input "2:8:AlpsPS/2_ALPS_DualPoint_TouchPad" {
     # Microphone
     bindsym XF86AudioMicMute exec amixer -q set Capture toggle
 
+    # Brightness
+    bindsym XF86MonBrightnessUp exec brightnessctl set +1%
+    bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
+
     # web broser
     bindsym XF86HomePage exec chromium
 
