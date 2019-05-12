@@ -122,6 +122,9 @@ fi
 # add alias for ssh to update the tty
 alias ssh="gpg-connect-agent updatestartuptty /bye >/dev/null; ssh"
 
+# same for git operations
+alias git="gpg-connect-agent updatestartuptty /bye >/dev/null; git"
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
