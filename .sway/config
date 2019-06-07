@@ -1,14 +1,8 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
+
 set $left Left
 set $down Down
 set $up Up
@@ -20,8 +14,6 @@ set $term urxvt
 set $menu "exec rofi -show run -lines 10 -eh 1 -padding 800 -font 'Roboto 18'"
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
 output * bg /home/benji/src/swaywm/sway/assets/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
@@ -36,30 +28,18 @@ output eDP-1 scale 1
 #
 # Example configuration:
 #
- exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * dpms off"' \
-               resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -c 000000' \
-	  lock 'swaylock -f -c 000000'
+exec swayidle -w \
+        timeout 300 'swaylock -f -c 000000' \
+        timeout 600 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+	before-sleep 'swaylock -f -c 000000' \
+	lock 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 input * {
 	xkb_layout ch
@@ -100,10 +80,10 @@ input "2:8:AlpsPS/2_ALPS_DualPoint_TouchPad" {
     bindsym XF86MonBrightnessUp exec brightnessctl set +1%
     bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
 
-    # web broser
+    # Web Browser
     bindsym XF86HomePage exec chromium
 
-    # file explorer
+    # File Explorer
     bindsym XF86MyComputer exec nautilus $HOME
 
     # calculator
@@ -188,18 +168,6 @@ input "2:8:AlpsPS/2_ALPS_DualPoint_TouchPad" {
     # move focus to the parent container
     bindsym $mod+a focus parent
 #
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
-#
 # Resizing containers:
 #
 mode "resize" {
@@ -223,17 +191,10 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    swaybar_command waybar
 }
+
+default_border pixel
+font pango:"RobotoMono Nerd Font" 8
 
 include @sysconfdir@/sway/config.d/*
