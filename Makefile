@@ -29,6 +29,8 @@ dotfiles: ## Installs the dotfiles.
 	mkdir -p $(HOME)/.local/share;
 	ln -snf $(CURDIR)/.fonts $(HOME)/.local/share/fonts;
 	ln -snf $(CURDIR)/.bash_profile $(HOME)/.profile;
+	ln -snf $(CURDIR)/.Xdefaults $(HOME)/.Xdefaults
+	ln -snf $(CURDIR)/.Xdefaults $(HOME)/.Xresources
 	if [ -f /usr/local/bin/android-studio/bin/studio.sh ]; then \
 		sudo ln -sf /usr/local/bin/android-studio/bin/studio.sh /usr/local/bin/androidstudio; \
 	fi;

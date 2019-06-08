@@ -1,0 +1,68 @@
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
+
+! -- Fonts -- !
+URxvt.font: xft:Inconsolata:pixelsize=19:antialias=true:hinting=full,xft:Symbola:pixelsize=19:antialias=true:hinting=full
+URxvt.boldFont: xft:Inconsolata:style=bold:pixelsize=19:antialias=true:hinting=full,xft:Symbola:pixelsize=19:antialias=true:hinting=full
+
+!!*faceSize:              10
+*bellIsUrgent:          true
+
+!! scroll
+!! do not scroll with output
+URxvt*scrollTtyOutput:      false
+!! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer:     true
+!! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress:    true
+
+!! scrollback buffer
+URxvt.secondaryScreen:  1
+URxvt.secondaryScroll:  0
+URxvt.secondaryWheel:   1
+
+!! scrollbar
+*scrollBar:             false
+
+URxvt*termName:         rxvt
+
+!! transparency
+URxvt.depth: 32
+URxvt.background: rgba:1111/1111/1111/dddd
+
+!! clickable urls
+URxvt.perl-ext-common:      default,matcher,selection-to-clipboard,clipboard
+URxvt.url-launcher:         /usr/bin/xdg-open
+URxvt.matcher.button:       1
+URxvt.url-select.underline: true
+
+!! copy paste
+URxvt.clipboard.autocopy:   true
+URxvt.clipboard.copycmd:    wl-copy
+URxvt.clipboard.pastecmd:   wl-paste
+
+!! disable default bindings for Control-Shift
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+!! Control-Shift-C for copy
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.Control-v: perl:clipboard:paste
