@@ -14,7 +14,7 @@ set $term urxvt
 set $menu "exec rofi -show run -lines 10 -eh 1 -padding 800 -font 'Roboto 18'"
 
 ### Output configuration
-output * bg /home/benji/src/swaywm/sway/assets/Sway_Wallpaper_Blue_1920x1080.png fill
+output "*" bg /home/benji/pictures/wallpaper.jpg fill
 #
 # Example configuration:
 #

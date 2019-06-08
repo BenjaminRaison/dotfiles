@@ -1,57 +1,84 @@
 {
-    // With inspiration from https://github.com/AN3223/dotfiles
     "position": "top",
-    "height": 23,
+    "height": 25,
 
-    // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "custom/block0", "custom/arrow0", "sway/mode"],
-    "modules-center": [],
-    "modules-right": ["custom/arrow1", "pulseaudio", "custom/arrow2", "cpu", "custom/arrow3", "memory", "custom/arrow4", "tray", "custom/arrow5", "clock"],
+    "modules-left": ["sway/workspaces", "sway/mode", "idle_inhibitor", "custom/github"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["network", "battery", "pulseaudio", "cpu", "memory", "clock"],
 
-    // Modules configuration
     "sway/workspaces": {
         "format": "{name}"
     },
     "sway/mode": {
-        "format": "!"
+        "format": "{}"
     },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+    "sway/window": {
+        "tooltip": false
     },
     "clock": {
-	"format": "{:%Y-%m-%d %H:%M}"
+	"format": "{:%Y-%m-%d %H:%M}",
+        "tooltip": false
     },
     "cpu": {
         "format": " {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": "RAM: {}%"
+        "format": " {}%",
+        "tooltip": false
     },
     "pulseaudio": {
-        "format": "VOL: {volume}%",
+        "scroll-step": 1,
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-muted": "婢 {format_source}",
+        "format-source": "  {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
         "on-click": "pavucontrol"
     },
-    "custom/block0": {
-        "format": "█"
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "廊",
+            "deactivated": "蠟"
+        },
+        "tooltip": false
     },
-    "custom/arrow0": {
-        "format": ""
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15,
+            "nagging": 5
+        },
+        "tooltip": false,
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-full": " {capacity}%",
+        "format-icons": ["", "", "", "", "", "", "", "", "", ""]
     },
-    "custom/arrow1": {
-        "format": ""
+    "network": {
+        "format-wifi": "直 {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "睊 Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+	"tooltip": false
     },
-    "custom/arrow2": {
-        "format": ""
-    },
-    "custom/arrow3": {
-        "format": ""
-    },
-    "custom/arrow4": {
-        "format": ""
-    },
-    "custom/arrow5": {
-        "format": ""
+    "custom/github": {
+        "format": "{}",
+        "exec": "/usr/local/bin/notifications-github.sh",
+        "interval": 3600,
+        "on-click": "xdg-open 'https://github.com/notifications'"
     }
 }
