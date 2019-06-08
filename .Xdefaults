@@ -19,8 +19,8 @@
 *.color15:    #E6E6E6
 
 ! -- Fonts -- !
-URxvt.font: xft:Inconsolata:pixelsize=19:antialias=true:hinting=full,xft:Symbola:pixelsize=19:antialias=true:hinting=full
-URxvt.boldFont: xft:Inconsolata:style=bold:pixelsize=19:antialias=true:hinting=full,xft:Symbola:pixelsize=19:antialias=true:hinting=full
+URxvt.font: xft:Roboto Mono Nerd Font Mono:pixelsize=19:antialias=true:hinting=full,xft:Symbola:pixelsize=19:antialias=true:hinting=full
+URxvt.boldFont: xft:Roboto Mono Nerd Font Mono:style=bold:pixelsize=19:antialias=true:hinting=full,xft:Symbola:pixelsize=19:antialias=true:hinting=full
 
 !!*faceSize:              10
 *bellIsUrgent:          true

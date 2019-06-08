@@ -65,7 +65,7 @@
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
         "format-full": " {capacity}%",
-        "format-icons": ["", "", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
     },
     "network": {
         "format-wifi": "直 {essid} ({signalStrength}%)",
