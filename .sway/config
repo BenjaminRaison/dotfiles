@@ -197,4 +197,6 @@ bar {
 default_border pixel
 font pango:"RobotoMono Nerd Font" 8
 
+exec --no-startup-id dunst
+
 include @sysconfdir@/sway/config.d/*

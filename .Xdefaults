@@ -62,7 +62,3 @@ URxvt.clipboard.pastecmd:   wl-paste
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
-!! Control-Shift-C for copy
-URxvt.keysym.C-C: perl:clipboard:copy
-URxvt.keysym.C-V: perl:clipboard:paste
-URxvt.keysym.Control-v: perl:clipboard:paste

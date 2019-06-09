@@ -2,7 +2,7 @@
     "position": "top",
     "height": 25,
 
-    "modules-left": ["sway/workspaces", "sway/mode", "idle_inhibitor", "custom/github"],
+    "modules-left": ["sway/workspaces", "sway/mode", "idle_inhibitor", "custom/github", "custom/backup-local"],
     "modules-center": ["sway/window"],
     "modules-right": ["network", "battery", "pulseaudio", "cpu", "memory", "clock"],
 
@@ -80,5 +80,12 @@
         "exec": "/usr/local/bin/notifications-github.sh",
         "interval": 3600,
         "on-click": "xdg-open 'https://github.com/notifications'"
+    },
+    "custom/backup-local": {
+        "format": "{}",
+	"exec": "/usr/local/bin/is-backup-drive-mounted.sh",
+	"interval": 60,
+	"on-click": "urxvt -e sh -c '/usr/local/bin/backup.sh; bash'"
     }
 }
+
