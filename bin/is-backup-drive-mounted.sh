@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -d /media/benji/Drive/borg/backup-$(hostname) ]; then
+if [ -d /media/benji/Drive/borg/backup-"$(hostname)" ]; then
     echo ""
 else
     echo ""

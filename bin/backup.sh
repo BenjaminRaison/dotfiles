@@ -2,10 +2,10 @@
 # Loosely based on https://borgbackup.readthedocs.io/en/stable/deployment/automated-local.html
 
 MOUNTPOINT=/media/benji/Drive
-TARGET=$MOUNTPOINT/borg/backup-$(hostname)
-ARCHIVENAME=$(date --iso-8601)-$(hostname)
+TARGET="$MOUNTPOINT"/borg/backup-"$(hostname)"
+ARCHIVENAME="$(date --iso-8601)"-"$(hostname)"
 
-[ -d "$TARGET" ] || (echo "Backup not mounted, aborting.";exit)
+if [ ! -d "$TARGET" ]; then echo "Backup not mounted, aborting."; exit; fi
 
 export BORG_RELOCATED_REPO_ACCESS_IS_OK=no
 export BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK=no
