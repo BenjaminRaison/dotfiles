@@ -29,11 +29,11 @@ output eDP-1 scale 1
 # Example configuration:
 #
 exec swayidle -w \
-        timeout 300 'swaylock -f -c 000000' \
+        timeout 300 'swaylock -f -e -c 000000' \
         timeout 600 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
-	before-sleep 'swaylock -f -c 000000' \
-	lock 'swaylock -f -c 000000'
+	before-sleep 'swaylock -f -e -c 000000' \
+	lock 'swaylock -f -e -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -66,7 +66,7 @@ input "2:8:AlpsPS/2_ALPS_DualPoint_TouchPad" {
     bindsym $mod+d exec $menu
 
     # lock
-    bindsym $mod+l exec "swaylock -f -c 000000"
+    bindsym $mod+l exec "swaylock -f -e -c 000000"
 
     # Volume
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +1%
