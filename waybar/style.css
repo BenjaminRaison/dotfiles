@@ -20,6 +20,29 @@ window#waybar {
     margin: 0 10px;
 }
 
+#battery.warning {
+    border-bottom: 2px solid orange;
+}
+
+#battery.critical {
+    border-bottom: 2px solid red;
+}
+
+#battery.nagging:not(.charging) {
+    border-bottom: 2px solid red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+	border: none;
+    }
+}
+
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
     padding: 0 5px;
