@@ -61,15 +61,15 @@ window#waybar {
 }
 
 #idle_inhibitor {
-    margin-left: 10px;
+    margin-left: 15px;
     padding: 0 7px;
     font-weight: bold;
 }
 #idle_inhibitor.activated {
-    background-color: #0bc1c1;
+    border-bottom: 3px solid #0faaaa;
 }
 
 #custom-github {
-    background-color: #0bc1c1;
+    border-bottom: 3px solid #0faaaa;
     padding: 0 5px;
 }
