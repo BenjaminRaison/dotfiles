@@ -5,3 +5,6 @@ export PATH=/usr/local/bin:${PATH}:/sbin
 
 # Add flutter
 export PATH=${HOME}/sdk/flutter/bin:${PATH}
+# Add go
+export PATH=$PATH:/usr/local/go/bin
+
