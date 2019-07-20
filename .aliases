@@ -125,3 +125,5 @@ alias screenshot='slurp | grim -g -'
 # Tell gpg-connect-agent where to prompt for password
 alias gpg-unlock="gpg-connect-agent updatestartuptty /bye"
 
+# Evolution needs to be told to use xwayland
+alias evolution='GDK_BACKEND=x11 evolution'
