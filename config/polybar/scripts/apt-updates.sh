@@ -3,7 +3,7 @@
 output=$(aptitude search '~U' | wc -l)
 
 
-if [ $output -gt 0 ];
+if [ "$output" -gt 0 ];
 then
 	echo ""
 else

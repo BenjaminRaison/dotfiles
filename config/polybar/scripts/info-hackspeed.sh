@@ -7,7 +7,7 @@ KEYBOARD_ID="AT Translated Set 2 keyboard"
 # cpm: characters per minute
 # wpm: words per minute (1 word = 5 characters)
 METRIC=cpm
-FORMAT=" %d $METRIC"
+FORMAT=" %d $METRIC"
 
 INTERVAL=10
 
@@ -18,8 +18,6 @@ INTERVAL=10
 LAYOUT=dontcare
 
 case "$LAYOUT" in
-	qwerty) CONDITION='($3 >= 10 && $3 <= 19) || ($3 >= 24 && $3 <= 33) || ($3 >= 37 && $3 <= 53) || ($3 >= 52 && $3 <= 58)'; ;;
-	azerty) CONDITION='($3 >= 10 && $3 <= 19) || ($3 >= 24 && $3 <= 33) || ($3 >= 37 && $3 <= 54) || ($3 >= 52 && $3 <= 57)'; ;;
 	dontcare) CONDITION='1'; ;; # Just register all key presses, not only letters and numbers
 	*) echo "Unsupported layout \"$LAYOUT\""; exit 1; ;;
 esac
@@ -39,6 +37,7 @@ trap 'rm "$hackspeed_cache"' EXIT
 
 # Write a dot to our cache for each key press
 printf '' > "$hackspeed_cache"
+# shellcheck disable=SC2016
 xinput test "$KEYBOARD_ID" | \
 	stdbuf -o0 awk '$1 == "key" && $2 == "press" && ('"$CONDITION"') {printf "."}' >> "$hackspeed_cache" &
 
@@ -57,6 +56,7 @@ while true; do
 	# then divide
 	value=$((lines * multiply_by / divide_by))
 
+	# shellcheck disable=SC2059
 	printf "$FORMAT\\n" "$value"
 
 	sleep $INTERVAL
