@@ -14,7 +14,7 @@ set $term urxvt
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu "exec rofi -show run -lines 10 -eh 1 -padding 800 -font 'Roboto 18'"
-set $locker "i3-lock-fancy -f -e -c 000000"
+set $locker "i3lock-fancy"
 
 
 ### Idle configuration
