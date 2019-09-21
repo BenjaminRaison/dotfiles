@@ -158,7 +158,7 @@ if [[ -f "${HOME}/.travis/travis.sh" ]]; then
 	source "${HOME}/.travis/travis.sh"
 fi
 
-xset -b # turn off the bell
+xset -b 2> /dev/null # turn off the bell
 
 for file in ~/.{bash_prompt,aliases,functions,path,dockerfunc,extra,exports}; do
 	if [[ -r "$file" ]] && [[ -f "$file" ]]; then
