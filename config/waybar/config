@@ -2,7 +2,7 @@
     "position": "top",
     "height": 25,
 
-    "modules-left": ["sway/workspaces", "sway/mode", "idle_inhibitor", "custom/github", "custom/backup-local"],
+    "modules-left": ["sway/workspaces", "sway/mode", "idle_inhibitor", "custom/aeroplane", "custom/github", "custom/backup-local"],
     "modules-center": ["sway/window"],
     "modules-right": ["network", "battery", "pulseaudio", "cpu", "memory", "clock"],
 
@@ -32,7 +32,7 @@
         "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": "{icon} {volume}% {format_source}",
         "format-muted": "婢 {format_source}",
-        "format-source": "  {volume}%",
+        "format-source": " {volume}%",
         "format-source-muted": "",
         "format-icons": {
             "headphones": "",
@@ -48,8 +48,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "廊",
-            "deactivated": "蠟"
+            "activated": "",
+            "deactivated": ""
         },
         "tooltip": false
     },
@@ -71,7 +71,7 @@
         "format-wifi": "直 {essid} ({signalStrength}%)",
         "format-ethernet": " {ifname}",
         "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "睊 Disconnected",
+        "format-disconnected": "睊",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
 	"tooltip": false
     },
@@ -86,6 +86,13 @@
 	"exec": "/usr/local/bin/is-backup-drive-mounted.sh",
 	"interval": 60,
 	"on-click": "urxvt -e sh -c '/usr/local/bin/backup.sh; bash'"
+    },
+    "custom/aeroplane": {
+	"format": "{}",
+	"exec": "/usr/local/bin/is-aeroplane.sh",
+	"interval": 1,
+	"on-click": "/usr/local/bin/toggle-aeroplane.sh",
+	"return-type": "json"
     }
 }
 

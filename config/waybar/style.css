@@ -20,11 +20,11 @@ window#waybar {
     margin: 0 10px;
 }
 
-#battery.warning {
+#battery.warning:not(.charging) {
     border-bottom: 2px solid orange;
 }
 
-#battery.critical {
+#battery.critical:not(.charging) {
     border-bottom: 2px solid red;
 }
 
@@ -62,14 +62,22 @@ window#waybar {
 
 #idle_inhibitor {
     margin-left: 15px;
-    padding: 0 7px;
-    font-weight: bold;
 }
-#idle_inhibitor.activated {
+.activated {
     border-bottom: 3px solid #0faaaa;
 }
 
 #custom-github {
     border-bottom: 3px solid #0faaaa;
-    padding: 0 5px;
 }
+
+#custom-aeroplane, #idle_inhibitor {
+    font-family: "Material Design Icons";
+}
+
+#custom-aeroplane, #custom-github, #idle_inhibitor {
+    margin-left: 2px;
+    padding: 0 5px;
+    font-weight: bold;
+}
+
