@@ -17,7 +17,7 @@ set $menu "exec rofi -show run -lines 10 -eh 1 -padding 800 -font 'Roboto 18'"
 set $locker "swaylock -f -e -c 000000"
 
 ### Output configuration
-output "*" bg /home/benji/pictures/wallpaper.jpg fill
+output "*" bg /home/benji/pictures/wallpaper fill
 #
 # Example configuration:
 #
@@ -188,7 +188,7 @@ mode "sys" {
 	bindsym $mod+x mode "default"; exec killall swaynag
 }
 
-set $exitnag swaynag -t warning -m "System management mode" -b "[L]ock" $locker -b "[R]eboot" "exec systemctl reboot" -b "[S]hutdown" "exec systemctl poweroff" -b "[E]xit sway" "exec swaymsg exit"
+set $exitnag swaynag -t warning -m "System management mode" -b "[L]ock" $locker -b "[R]eboot" "exec systemctl reboot" exec set-wallpaper-b "[S]hutdown" "exec systemctl poweroff" -b "[E]xit sway" "exec swaymsg exit"
 bindsym $mod+q mode "sys"; exec $exitnag
 
 #
@@ -206,5 +206,6 @@ font pango:"RobotoMono Nerd Font" 8
 
 # Startup programs
 exec --no-startup-id dunst
+exec --no-startup-id /usr/local/bin/set-wallpaper.sh
 
 include @sysconfdir@/sway/config.d/*
