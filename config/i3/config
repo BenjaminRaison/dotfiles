@@ -176,5 +176,6 @@ font pango:"RobotoMono Nerd Font" 8
 # Startup programs
 exec --no-startup-id dunst
 exec --no-startup-id compton
-exec --no-startup-id feh --bg-fill ~/pictures/wallpaper.jpg
+exec --no-startup-id set-wallpaper.sh
+exec --no-startup-id feh --bg-fill ~/pictures/wallpaper
 exec_always --no-startup-id ~/.config/polybar/launch.sh
