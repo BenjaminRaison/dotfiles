@@ -17,6 +17,8 @@ set $menu "exec rofi -show run -lines 10 -eh 1 -padding 800 -font 'Roboto 18'"
 set $locker "swaylock -f -e -c 000000"
 
 ### Output configuration
+# Set wallpaper first
+exec_always --no-startup-id /usr/local/bin/set-wallpaper.sh
 output "*" bg /home/benji/pictures/wallpaper fill
 #
 # Example configuration:
@@ -206,6 +208,5 @@ font pango:"RobotoMono Nerd Font" 8
 
 # Startup programs
 exec --no-startup-id dunst
-exec --no-startup-id /usr/local/bin/set-wallpaper.sh
 
 include @sysconfdir@/sway/config.d/*
