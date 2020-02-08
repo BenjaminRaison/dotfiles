@@ -88,7 +88,8 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
 
 # Trim new lines and copy to clipboard
-alias c="tr -d '\\n' | wl-copy"
+[ -n "$WAYLAND_DISPLAY" ] && alias c="tr -d '\\n' | wl-copy"
+[ -z "$WAYLAND_DISPLAY" ] && alias c='xclip -selection clipboard'
 
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
@@ -105,10 +106,10 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 # vhosts
-alias hosts='sudo vim /etc/hosts'
+alias hosts='sudoedit /etc/hosts'
 
 # copy working directory
-alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard'
+alias cwd='pwd | tr -d "\r\n" | c'
 
 # copy file interactive
 alias cp='cp -i'
@@ -120,10 +121,8 @@ alias mv='mv -i'
 alias untar='tar xvf'
 
 # screenshot
-alias screenshot='slurp | grim -g -'
+[ -n "$WAYLAND_DISPLAY" ] && alias screenshot='slurp | grim -g -'
+[ -z "$WAYLAND_DISPLAY" ] && alias screenshot='scrot --select -e '"'"'mv $f ~/pictures/screenshots/'"'"
 
 # Tell gpg-connect-agent where to prompt for password
 alias gpg-unlock="gpg-connect-agent updatestartuptty /bye"
-
-# Evolution needs to be told to use xwayland
-alias evolution='GDK_BACKEND=x11 evolution'
