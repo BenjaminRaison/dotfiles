@@ -44,6 +44,7 @@ exec swayidle -w \
 
 input * {
 	xkb_layout ch
+	xkb_numlock enabled
 }
 
 input "2:8:AlpsPS/2_ALPS_DualPoint_TouchPad" {

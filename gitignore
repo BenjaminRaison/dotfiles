@@ -137,6 +137,8 @@ tags
 *.a
 *.so
 
+!go.mod
+
 # Folders
 _obj
 _test
