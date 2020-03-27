@@ -28,6 +28,12 @@ sudo borg create --progress --stats --one-file-system --compression lzma,5 --che
 	--exclude '/home/*/.config/chromium' \
 	--exclude '/home/*/sdk' \
 	--exclude '/home/*/.thumbnails' \
+	--exclude '/home/*/.sbt' \
+	--exclude '/home/*/snap' \
+	--exclude '/home/*/.oracle_jre_usage' \
+	--exclude '/home/*/.secrets' \
+	--exclude '/home/*/go/bin' \
+	--exclude '/home/*/go/pkg' \
 	--exclude '*/.gradle' \
 	--exclude '*/node_modules' \
 	--exclude '*/build/' \

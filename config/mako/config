@@ -1,0 +1,21 @@
+font=Roboto Mono 11
+background-color=#000000
+text-color=#ffffff
+border-color=#333333
+
+icons=0
+max-visible=7
+sort=-priority
+sort=-time
+layer=overlay
+
+[hidden]
+format=(and %h more)
+text-color=#777777
+
+[urgency=high]
+background-color=#ff0000
+border-color=#aa0000
+
+[urgency=low]
+text-color=#aaaaaa

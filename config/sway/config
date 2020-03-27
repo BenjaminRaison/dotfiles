@@ -70,6 +70,9 @@ input "2:8:AlpsPS/2_ALPS_DualPoint_TouchPad" {
     # lock
     bindsym $mod+l exec $locker
 
+    # dismiss notification
+    bindsym $mod+n exec makoctl dismiss
+
     # Volume
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +1%
     bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -1%
@@ -208,6 +211,5 @@ hide_edge_borders smart
 font pango:"RobotoMono Nerd Font" 8
 
 # Startup programs
-exec --no-startup-id dunst
-
+exec --no-startup-id mako
 include @sysconfdir@/sway/config.d/*
