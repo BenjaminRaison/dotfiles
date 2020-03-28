@@ -160,6 +160,11 @@ fi
 
 xset -b 2> /dev/null # turn off the bell
 
+# save dbus socket for cron
+env | grep DBUS_SESSION_BUS_ADDRESS > "$HOME/.dbus/Xdbus"
+echo 'export DBUS_SESSION_BUS_ADDRESS' >> "$HOME/.dbus/Xdbus"
+chmod 600 "$HOME/.dbus/Xdbus"
+
 for file in ~/.{bash_prompt,aliases,functions,path,dockerfunc,extra,exports}; do
 	if [[ -r "$file" ]] && [[ -f "$file" ]]; then
 		# shellcheck source=/dev/null

@@ -1,7 +1,11 @@
 # Originally from github:jessfraz/dotfiles
 
 .PHONY: all
-all: bin dotfiles etc ## Installs the bin and etc directory files and the dotfiles.
+all: bin dotfiles etc warn ## Installs the bin and etc directory files and the dotfiles.
+
+.PHONY: warn
+warn:
+	@echo "\033[0;31mMANUAL: Add '*/2 * * * * /usr/local/bin/battery-warning.sh' to user crontab\033[0m'"
 
 .PHONY: bin
 bin: ## Installs the bin directory files.
