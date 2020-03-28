@@ -1,7 +1,7 @@
 #!/bin/bash -eu
 # Loosely based on https://borgbackup.readthedocs.io/en/stable/deployment/automated-local.html
 
-MOUNTPOINT=/media/benji/Drive
+MOUNTPOINT=/media/backup
 TARGET="$MOUNTPOINT"/borg/backup-"$(hostname)"
 ARCHIVENAME="$(date --iso-8601)"-"$(hostname)"
 
@@ -34,6 +34,7 @@ sudo borg create --progress --stats --one-file-system --compression lzma,5 --che
 	--exclude '/home/*/.secrets' \
 	--exclude '/home/*/go/bin' \
 	--exclude '/home/*/go/pkg' \
+	--exclude '/home/*/.config/google-chrome' \
 	--exclude '*/.gradle' \
 	--exclude '*/node_modules' \
 	--exclude '*/build/' \
@@ -52,4 +53,5 @@ echo "Completed backup for $ARCHIVENAME"
 # Paranoia
 sync
 
-notify-send "Backup complete" "The backup for $ARCHIVENAME on $MOUNTPOINT has completed"
+notify-send "Backup complete" "The backup for $ARCHIVENAME on $MOUNTPOINT has completed" -u critical
+sudo umount $MOUNTPOINT

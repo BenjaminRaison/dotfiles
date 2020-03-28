@@ -10,18 +10,24 @@ bin: ## Installs the bin directory files.
 		f=$$(basename $$file); \
 		sudo ln -sf $$file /usr/local/bin/$$f; \
 	done
+	if [ -f /usr/local/bin/android-studio/bin/studio.sh ]; then \
+		sudo ln -snf /usr/local/bin/android-studio/bin/studio.sh /usr/local/bin/androidstudio; \
+	fi;
+	if [ -f /usr/local/bin/pinentry ]; then \
+		sudo ln -snf /usr/bin/pinentry /usr/local/bin/pinentry; \
+	fi;
 
 .PHONY: dotfiles
 dotfiles: ## Installs the dotfiles.
 	# add aliases for dotfiles
 	for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".travis.yml" -not -name ".git" -not -name ".*.swp" -not -name ".gnupg"); do \
 		f=$$(basename $$file); \
-		ln -sfn $$file $(HOME)/$$f; \
+		ln -snf $$file $(HOME)/$$f; \
 	done; \
 	gpg --list-keys || true;
-	ln -sfn $(CURDIR)/.gnupg/gpg.conf $(HOME)/.gnupg/gpg.conf;
-	ln -sfn $(CURDIR)/.gnupg/gpg-agent.conf $(HOME)/.gnupg/gpg-agent.conf;
-	ln -sfn $(CURDIR)/gitignore $(HOME)/.gitignore;
+	ln -snf $(CURDIR)/.gnupg/gpg.conf $(HOME)/.gnupg/gpg.conf;
+	ln -snf $(CURDIR)/.gnupg/gpg-agent.conf $(HOME)/.gnupg/gpg-agent.conf;
+	ln -snf $(CURDIR)/gitignore $(HOME)/.gitignore;
 	git update-index --skip-worktree $(CURDIR)/.gitconfig;
 	mkdir -p $(HOME)/.config;
 	ln -snf $(CURDIR)/config/* $(HOME)/.config/
@@ -30,12 +36,6 @@ dotfiles: ## Installs the dotfiles.
 	ln -snf $(CURDIR)/.bash_profile $(HOME)/.profile;
 	ln -snf $(CURDIR)/.Xdefaults $(HOME)/.Xdefaults
 	ln -snf $(CURDIR)/.Xdefaults $(HOME)/.Xresources
-	if [ -f /usr/local/bin/android-studio/bin/studio.sh ]; then \
-		sudo ln -sf /usr/local/bin/android-studio/bin/studio.sh /usr/local/bin/androidstudio; \
-	fi;
-	if [ -f /usr/local/bin/pinentry ]; then \
-		sudo ln -snf /usr/bin/pinentry /usr/local/bin/pinentry; \
-	fi;
 
 .PHONY: etc
 etc: ## Installs the etc directory files.
@@ -44,11 +44,15 @@ etc: ## Installs the etc directory files.
 		sudo mkdir -p $$(dirname $$f); \
 		sudo ln -f $$file $$f; \
 	done
+	
 	systemctl --user daemon-reload || true
 	sudo systemctl daemon-reload
 	sudo systemctl enable systemd-networkd systemd-resolved
 	sudo systemctl start systemd-networkd systemd-resolved
 	sudo ln -snf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+	
+	sudo cp $(CURDIR)/udev/* /etc/udev/rules.d/
+	sudo udevadm control --reload
 
 .PHONY: test
 test: shellcheck ## Runs all the tests on the files in the repository.
