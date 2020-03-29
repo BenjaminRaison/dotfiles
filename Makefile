@@ -24,7 +24,7 @@ bin: ## Installs the bin directory files.
 .PHONY: dotfiles
 dotfiles: ## Installs the dotfiles.
 	# add aliases for dotfiles
-	for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".travis.yml" -not -name ".git" -not -name ".*.swp" -not -name ".gnupg"); do \
+	for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".travis.yml" -not -name ".git" -not -name ".*.swp" -not -name ".gnupg" -not -name ".mako"); do \
 		f=$$(basename $$file); \
 		ln -snf $$file $(HOME)/$$f; \
 	done; \
@@ -34,12 +34,14 @@ dotfiles: ## Installs the dotfiles.
 	ln -snf $(CURDIR)/gitignore $(HOME)/.gitignore;
 	git update-index --skip-worktree $(CURDIR)/.gitconfig;
 	mkdir -p $(HOME)/.config;
-	ln -snf $(CURDIR)/config/* $(HOME)/.config/
+	ln -snf $(CURDIR)/config/* $(HOME)/.config/;
 	mkdir -p $(HOME)/.local/share;
 	ln -snf $(CURDIR)/.fonts $(HOME)/.local/share/fonts;
 	ln -snf $(CURDIR)/.bash_profile $(HOME)/.profile;
-	ln -snf $(CURDIR)/.Xdefaults $(HOME)/.Xdefaults
-	ln -snf $(CURDIR)/.Xdefaults $(HOME)/.Xresources
+	ln -snf $(CURDIR)/.Xdefaults $(HOME)/.Xdefaults;
+	ln -snf $(CURDIR)/.Xdefaults $(HOME)/.Xresources;
+	mkdir -p $(HOME)/.config/mako;
+	cp $(CURDIR)/config/.mako/config $(HOME)/.config/mako/config;
 
 .PHONY: etc
 etc: ## Installs the etc directory files.
