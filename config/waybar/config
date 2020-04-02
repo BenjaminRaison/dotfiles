@@ -32,7 +32,7 @@
         "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": "{icon} {volume}% {format_source}",
         "format-muted": "婢 {format_source}",
-        "format-source": " {volume}%",
+        "format-source": "",
         "format-source-muted": "",
         "format-icons": {
             "headphones": "",
