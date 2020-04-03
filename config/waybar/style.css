@@ -75,7 +75,7 @@ window#waybar {
     font-family: "Material Design Icons";
 }
 
-#custom-aeroplane, #custom-github, #idle_inhibitor, #custom-backup-local {
+#custom-aeroplane, #custom-github, #idle_inhibitor {
     margin-left: 2px;
     padding: 0 5px;
     font-weight: bold;

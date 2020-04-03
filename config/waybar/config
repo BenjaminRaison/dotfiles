@@ -30,7 +30,7 @@
     "pulseaudio": {
         "scroll-step": 1,
         "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
         "format-muted": "婢 {format_source}",
         "format-source": "",
         "format-source-muted": "",
@@ -80,12 +80,6 @@
         "exec": "/usr/local/bin/notifications-github.sh",
         "interval": 3600,
         "on-click": "xdg-open 'https://github.com/notifications'"
-    },
-    "custom/backup-local": {
-        "format": "{}",
-	"exec": "/usr/local/bin/is-backup-drive-mounted.sh",
-	"interval": 60,
-	"on-click": "urxvt -e sh -c '/usr/local/bin/backup.sh; bash'"
     },
     "custom/aeroplane": {
 	"format": "{}",
