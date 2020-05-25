@@ -211,6 +211,10 @@ default_border pixel
 hide_edge_borders smart
 font pango:"RobotoMono Nerd Font" 8
 
+# IntelliJ/Android Studio
+for_window [title="win0"] floating enable
+for_window [title="Update"] floating enable
+
 # Startup programs
 exec --no-startup-id mako
 include @sysconfdir@/sway/config.d/*
