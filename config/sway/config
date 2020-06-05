@@ -14,7 +14,7 @@ set $term urxvt
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu "exec rofi -show run -lines 10 -eh 1 -padding 800 -font 'Roboto 18'"
-set $locker "swaylock -f -e -c 000000"
+set $locker "swaylock -f -e --image ~/pictures/wallpapers/flight.jpg"
 
 ### Output configuration
 # Set wallpaper first
@@ -34,11 +34,10 @@ output eDP-1 scale 1
 # Example configuration:
 #
 exec swayidle -w \
-        timeout 300 $locker \
-        timeout 600 'swaymsg "output * dpms off"' \
-        resume $locker \
-	before-sleep $locker \
-	lock $locker
+        timeout 120 $locker \
+        timeout 180 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+	before-sleep $locker 
 
 ### Input configuration
 
