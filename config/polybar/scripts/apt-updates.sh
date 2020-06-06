@@ -5,7 +5,7 @@ output=$(aptitude search '~U' | wc -l)
 
 if [ "$output" -gt 0 ];
 then
-	echo ""
+	echo ""
 else
 	echo ""
 fi
