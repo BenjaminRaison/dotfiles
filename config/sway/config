@@ -216,4 +216,6 @@ for_window [title="Update"] floating enable
 
 # Startup programs
 exec --no-startup-id mako
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+
 include @sysconfdir@/sway/config.d/*

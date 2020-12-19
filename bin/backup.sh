@@ -14,7 +14,7 @@ borg --version
 echo "Starting backup for $ARCHIVENAME on $TARGET"
 
 # Run as root to back up /etc
-sudo borg create --progress --stats --one-file-system --compression lzma,5 --checkpoint-interval 86400 \
+sudo borg create --progress --stats --one-file-system --compression auto,lzma,6 \
 	--exclude '/home/*/.cache' \
 	--exclude '/home/*/.android' \
 	--exclude '/home/*/.AndroidStudio*' \
