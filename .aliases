@@ -125,5 +125,7 @@ alias untar='tar xvf'
 # shellcheck disable=SC2154
 [ -z "$WAYLAND_DISPLAY" ] && alias screenshot='scrot --select -e '"'"'mv $f ~/pictures/screenshots/'"'"
 
+alias alert='notify-send "Done"'
+
 # Tell gpg-connect-agent where to prompt for password
 alias gpg-unlock="gpg-connect-agent updatestartuptty /bye"
