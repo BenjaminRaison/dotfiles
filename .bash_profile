@@ -10,3 +10,8 @@ for file in ~/.{bashrc,bash_prompt,aliases,functions,path,dockerfunc,extra,expor
 	fi
 done
 unset file
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+	exec sway
+fi
+

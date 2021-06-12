@@ -129,3 +129,5 @@ alias alert='notify-send "Done"'
 
 # Tell gpg-connect-agent where to prompt for password
 alias gpg-unlock="gpg-connect-agent updatestartuptty /bye"
+
+alias svim="sudoedit"
