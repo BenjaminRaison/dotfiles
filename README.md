@@ -1,7 +1,5 @@
 # dotfiles
 
-[![Build Status](https://travis-ci.org/BenjaminRaison/dotfiles.svg?branch=master)](https://travis-ci.org/BenjaminRaison/dotfiles)
-
 Significant portions of my dotfiles are copied from [jessfraz](https://github.com/jessfraz/dotfiles)
 
 ## Installing

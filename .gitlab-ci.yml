@@ -1,0 +1,7 @@
+image: r.j3ss.co/shellcheck:latest
+
+test:
+  stage: test
+  script:
+    - ./test.sh
+
